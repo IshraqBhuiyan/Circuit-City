@@ -26,3 +26,5 @@ Instruction Manual
 Dev Log:
 
 5/26 During class: created main class and component class.
+
+5/27 When I SHOULD BE SLEEPING: added the menuOption class and battery subclasses, started on display functions.
