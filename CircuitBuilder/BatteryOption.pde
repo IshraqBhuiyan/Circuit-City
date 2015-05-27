@@ -7,13 +7,10 @@ class BatteryOption extends MenuOption{
     CY=Y+(img.height/2);
     menuItems.add(this);
   }
-  void createPart(){
+  void getClicked(){
     Battery a = new Battery();
   }
   void display(){
-    if(clickedOn){
-      createPart();
-    }
     image(img,X,Y);
   }
 }

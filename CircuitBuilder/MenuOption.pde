@@ -1,11 +1,13 @@
 class MenuOption {
   float X, Y,CX,CY;
-  boolean clickedOn;
+  boolean clicked;
   PImage img;
   MenuOption(){
-    clickedOn=false;
+    clicked=false;
   }
   void display(){}
-  void createPart(){}
+  void getClicked(){
+    clicked=!clicked;
+  }
 }
 
