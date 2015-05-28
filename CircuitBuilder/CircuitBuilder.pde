@@ -3,12 +3,14 @@ ArrayList<Component> circuitParts=new ArrayList<Component>();
 int batteryX,batteryY;
 boolean dragon;
 void setup(){
-  size(800,600);
+  frameRate(30);
+  size(1080,900);
   background(100,100,100);
   BatteryOption b=new BatteryOption();
   dragon=false;
 } 
 void draw(){
+  background(100,100,100);
   for(MenuOption m:menuItems){
    m.display();
    
