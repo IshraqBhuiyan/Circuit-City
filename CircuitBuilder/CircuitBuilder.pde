@@ -15,11 +15,11 @@ void setup() {
 } 
 void draw() {
   background(100, 100, 100);
-  if(state==0)message="Drag";
-  if(state==1)message="Connect";
-  fill(200,122,0);
-  text("State: "+message,10,30);
-  
+  if (state==0)message="Drag";
+  if (state==1)message="Connect";
+  fill(200, 122, 0);
+  text("State: "+message, 10, 30);
+
   for (MenuOption m : menuItems) {
     m.display();
   }
@@ -47,11 +47,15 @@ void mousePressed() {
     dragon=!dragon;
   }
 }
-void keyPressed(){
-  if(key=='c'){
+void keyPressed() {
+  if (key=='c') {
     state=1;
+    if (circuitParts.get(circuitParts.size()-1).dragging) {
+      circuitParts.remove(circuitParts.size()-1);
+    }
   }
-  if(key=='d'){
+  if (key=='d') {
     state=0;
   }
 }
+
