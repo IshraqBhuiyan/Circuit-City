@@ -7,6 +7,7 @@ void setup(){
   size(1080,900);
   background(100,100,100);
   BatteryOption b=new BatteryOption();
+  ResistorOption r = new ResistorOption();
   dragon=false;
 } 
 void draw(){
@@ -21,6 +22,9 @@ void draw(){
 }
 void mousePressed(){
   if(dragon){
+    if((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6){
+      circuitParts.remove(circuitParts.size()-1);
+    }
     for(Component c:circuitParts){
       c.dragging=false;
     }
