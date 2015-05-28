@@ -21,6 +21,8 @@ Capacitors and other basic circuit components
 
 Logic Circuit functionality
 
+Voltmeters and Ammeters
+
 Instruction Manual
 
 Dev Log:
