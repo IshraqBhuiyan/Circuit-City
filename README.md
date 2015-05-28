@@ -28,3 +28,7 @@ Dev Log:
 5/26 During class: created main class and component class.
 
 5/27 When I SHOULD BE SLEEPING: added the menuOption class and battery subclasses, started on display functions.
+
+5/27 During class: created first branch, Ishraq is now working on menu.
+
+5/27 Home: "finished" click and drag functionality, not sure if processing has stacks or not.
