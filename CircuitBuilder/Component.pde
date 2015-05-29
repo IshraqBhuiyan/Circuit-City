@@ -12,6 +12,14 @@ class Component{
    CX=mouseX;
    CY=mouseY;
  }
+ void getClicked(){
+   if(state==0){
+     dragging=!dragging;
+   }
+   else if(state==1){
+     
+   }
+ }
  void setConnectionPoints(){
    if(vert){
      WX1=CX;
