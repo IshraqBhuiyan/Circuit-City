@@ -46,9 +46,6 @@ void mousePressed() {
     }
     dragon=!dragon;
   }
-  if(state==1){
-    
-  }
 }
 void keyPressed() {
   if (key=='c') {
