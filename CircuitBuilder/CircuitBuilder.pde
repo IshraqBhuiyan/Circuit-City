@@ -1,8 +1,11 @@
 ArrayList<MenuOption> menuItems = new ArrayList<MenuOption>();
 ArrayList<Component> circuitParts=new ArrayList<Component>();
+ArrayList<Wire> allWires = new ArrayList<Wire>();
 int state;
 String message="";
 boolean dragon;
+Component con=null;
+float WireX=0,WireY=0;
 void setup() {
   frameRate(30);
   size(1080, 900);
@@ -26,6 +29,12 @@ void draw() {
   for (Component c : circuitParts) {
     c.display();
   }
+  for (Wire w : allWires){
+    w.display();
+  }
+  if(state==1 && con!=null){
+    line(mouseX,mouseY,WireX,WireY);
+  }
 }
 void mousePressed() {
   if (state==0) {
@@ -45,6 +54,11 @@ void mousePressed() {
       }
     }
     dragon=!dragon;
+  }
+  else if(state==1){
+    for(Component c:circuitParts){
+      c.getClicked();
+    }
   }
 }
 void keyPressed() {
