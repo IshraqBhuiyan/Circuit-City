@@ -61,6 +61,7 @@ class Component{
      CY=mouseY;
      X=CX-(img.width/2);
      Y=CY-(img.height/2);
+     setConnectionPoints();
    }
    image(img,X,Y);
  }

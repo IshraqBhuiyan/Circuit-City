@@ -4,7 +4,7 @@ class Battery extends Component{
     img=loadImage("Battery.png");
     X=CX-(img.width/2);
     Y=CY-(img.height/2);
-    setConnectionPoints();
+    //setConnectionPoints();
     circuitParts.add(this);
   }
 }
