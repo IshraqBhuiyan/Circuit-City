@@ -62,7 +62,11 @@ void draw() {
   }
 }
 void mousePressed() {
-  if (state==0) {
+  if(state==-1){
+    if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
+      state = 0;
+    }
+  }else if (state==0) {
     if (dragon) {
       if ((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6) {
         circuitParts.remove(circuitParts.size()-1);
