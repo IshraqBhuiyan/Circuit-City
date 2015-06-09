@@ -6,7 +6,9 @@ String message="";
 boolean dragon;
 Component con=null;
 float WireX=0, WireY=0;
-int b1x,b1y,b1w,b1h;
+int b1x,b1y,bw,bh;
+int b2x,b2y;
+int b3x,b3y;
 void setup() {
   frameRate(30);
   size(1080, 900);
@@ -18,8 +20,13 @@ void setup() {
   textSize(32);
   b1x=width/2;
   b1y=height/3;
-  b1w=width/4;
-  b1h=height/8;
+  bw=width/4;
+  bh=height/8;
+  b2x=b1x;
+  b2y=b1y+height/5;
+  b3x=b2x;
+  b3y=b2y+height/5;
+  rectMode(CENTER);
 } 
 void draw() {
   if (state==-1) {
@@ -31,20 +38,9 @@ void draw() {
     textFont(font);
     textAlign(CENTER);
     text("OHM NOM Presents:\nCircuit Builder",width/2,height/16);
-    /*int b1x=width/2;
-    int b1y=height/3;
-    int b1w=width/4;
-    int b1h=height/8;*/
-    if(mouseOverRect(b1x,b1y,b1w,b1h)){
-      fill(0,155,0);
-    } else {
-      fill(155,155,155);
-    }
-    rectMode(CENTER);
-    rect(b1x,b1y,b1w,b1h);
-    textFont(font,55);
-    fill(235,235,0);
-    text("New Circuit",b1x,b1y);
+    drawRectangle(b1x,b1y,"New Circuit");
+    drawRectangle(b2x,b2y,"Load Circuit");
+    drawRectangle(b3x,b3y,"Help");
   } else {
     background(100, 100, 100);
     if (state==0)message="Drag";
@@ -66,9 +62,21 @@ void draw() {
     }
   }
 }
+void drawRectangle(int x,int y,String msg){
+  if(mouseOverRect(x,y,bw,bh)){
+    fill(0,155,0,210);
+  }
+  else{
+    fill(100,100,100,130);
+  }
+  rect(x,y,bw,bh);
+  //textFont(font,55);
+    fill(235,235,0);
+    text(msg,x,y);
+}
 void mousePressed() {
   if(state==-1){
-    if(mouseOverRect(b1x,b1y,b1w,b1h)){
+    if(mouseOverRect(b1x,b1y,bw,bh)){
     //if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
       state = 0;
     }
