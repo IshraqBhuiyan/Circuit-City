@@ -27,6 +27,7 @@ void setup() {
   b3x=b2x;
   b3y=b2y+height/5;
   rectMode(CENTER);
+  textAlign(CENTER);
 } 
 void draw() {
   if (state==-1) {
@@ -36,12 +37,26 @@ void draw() {
     fill(0,40,255);
     PFont font=loadFont("SakkalMajalla-60.vlw");
     textFont(font);
-    textAlign(CENTER);
     text("OHM NOM Presents:\nCircuit Builder",width/2,height/16);
     drawRectangle(b1x,b1y,"New Circuit");
     drawRectangle(b2x,b2y,"Load Circuit");
     drawRectangle(b3x,b3y,"Help");
-  } else {
+  } else if(state==-2){
+    tint(255,126);
+    PImage img=loadImage("MenuBackground.png");
+    img.resize(width,height);
+    background(img);
+    noTint();
+    fill(255,10,10);
+    rectMode(CORNER);
+    textSize(70);
+    text("Help:\nOn the top left corner of the screen,\nyou should see the state of the program.\nIf that state is drag,\nyou can move objects by clicking on them,\nmoving your mouse to where you want the object to go,\nand clicking again. If the state is connect, you can connect the objects with wire by clicking on them. To change the state to drag, press d. To change the state to connect, press c.",0,0,width,height);
+    rectMode(CENTER);
+    textSize(60);
+    drawRectangle(b1x,11*height/12,"Back");
+  }
+ 
+  else {
     background(100, 100, 100);
     if (state==0)message="Drag";
     if (state==1)message="Connect";
@@ -77,8 +92,14 @@ void drawRectangle(int x,int y,String msg){
 void mousePressed() {
   if(state==-1){
     if(mouseOverRect(b1x,b1y,bw,bh)){
-    //if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
       state = 0;
+    }
+    else if(mouseOverRect(b3x,b3y,bw,bh)){
+      state=-2;
+    }
+  }else if(state==-2){
+    if(mouseOverRect(b1x,11*height/12,bw,bh)){
+      state=-1;
     }
   }else if (state==0) {
     if (dragon) {
