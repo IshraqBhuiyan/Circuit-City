@@ -4,6 +4,7 @@ class Component{
  float resistance;
  float X,Y,CX,CY;
  float WX1,WY1,WX2,WY2;
+ int ID;
  boolean vert;
  PImage img;
  boolean dragging;
@@ -11,6 +12,7 @@ class Component{
    dragging=true;
    CX=mouseX;
    CY=mouseY;
+   ID=circuitParts.size()+1;
  }
  void getClicked(){
    if(mouseX > (X+img.width) || mouseX < X || mouseY > (Y+img.height) || mouseY < Y){
@@ -32,7 +34,7 @@ class Component{
        }
      }
      else{
-       if(!con.equals(this)){
+       if(con.ID!=ID){
          Wire w=new Wire(this);
        }
        con=null;
