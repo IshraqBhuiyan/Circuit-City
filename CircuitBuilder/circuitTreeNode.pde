@@ -20,14 +20,18 @@ class circuitTreeNode /*implements TreeNode*/{
     p = pa;
   }
   
+  Component getComp(){
+    return me;
+  }
+  
   circuitTreeNode[] getChildren(){
     return c;
   }
   
-  Component[] getChildren(){
+  Component[] getChildrens(){
     Component[] ans = new Component[c.length];
     for(int i=0;i<c.length;i++){
-      ans[i]=c[i];
+      ans[i]=c[i].getComp();
     }
     return ans;
   }

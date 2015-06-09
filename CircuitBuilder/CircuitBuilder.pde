@@ -1,7 +1,7 @@
 ArrayList<MenuOption> menuItems = new ArrayList<MenuOption>();
 ArrayList<Component> circuitParts=new ArrayList<Component>();
 ArrayList<Wire> allWires = new ArrayList<Wire>();
-int state;Circu
+int state;
 String message="";
 boolean dragon;
 Component con=null;
