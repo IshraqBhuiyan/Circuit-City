@@ -6,10 +6,6 @@ String message="";
 boolean dragon;
 Component con=null;
 float WireX=0, WireY=0;
-int b1x=width/2;
-int b1y=height/3;
-int b1w=width/4;
-int b1h=height/8;
 void setup() {
   frameRate(30);
   size(1080, 900);
@@ -23,23 +19,27 @@ void setup() {
 void draw() {
   if (state==-1) {
     PImage img=loadImage("MenuBackground.png");
-    img.resize(width, height);
+    img.resize(width,height);
     background(img);
-    fill(0, 40, 255);
+    fill(0,40,255);
     PFont font=loadFont("SakkalMajalla-60.vlw");
     textFont(font);
     textAlign(CENTER);
-    text("OHM NOM Presents:\nCircuit Builder", width/2, height/16);
-    if (mouseOverRect(b1x, b1y, b1w, b1h)) {
-      fill(0, 155, 0);
+    text("OHM NOM Presents:\nCircuit Builder",width/2,height/16);
+    int b1x=width/2;
+    int b1y=height/3;
+    int b1w=width/4;
+    int b1h=height/8;
+    if(mouseOverRect(b1x,b1y,b1w,b1h)){
+      fill(0,155,0);
     } else {
-      fill(155, 155, 155);
+      fill(155,155,155);
     }
     rectMode(CENTER);
-    rect(b1x, b1y, b1w, b1h);
-    textFont(font, 55);
-    fill(235, 235, 0);
-    text("New Circuit", b1x, b1y);
+    rect(b1x,b1y,b1w,b1h);
+    textFont(font,55);
+    fill(235,235,0);
+    text("New Circuit",b1x,b1y);
   } else {
     background(100, 100, 100);
     if (state==0)message="Drag";
@@ -62,11 +62,11 @@ void draw() {
   }
 }
 void mousePressed() {
-  if (state==-1) {
-    if (mouseOverRect(b1x, b1y, b1w, b1h)) {
+  if(state==-1){
+    if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
       state = 0;
     }
-  } else if (state==0) {
+  }else if (state==0) {
     if (dragon) {
       if ((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6) {
         circuitParts.remove(circuitParts.size()-1);
@@ -103,4 +103,3 @@ void keyPressed() {
 boolean mouseOverRect(int x, int y, int w, int h) {
   return (mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY >= y-h/2 && mouseY <= y+h/2);
 }
-
