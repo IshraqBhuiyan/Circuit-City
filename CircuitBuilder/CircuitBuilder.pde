@@ -6,6 +6,7 @@ String message="";
 boolean dragon;
 Component con=null;
 float WireX=0, WireY=0;
+int b1x,b1y,b1w,b1h;
 void setup() {
   frameRate(30);
   size(1080, 900);
@@ -15,6 +16,10 @@ void setup() {
   dragon=false;
   state=-1;
   textSize(32);
+  b1x=width/2;
+  b1y=height/3;
+  b1w=width/4;
+  b1h=height/8;
 } 
 void draw() {
   if (state==-1) {
@@ -26,10 +31,10 @@ void draw() {
     textFont(font);
     textAlign(CENTER);
     text("OHM NOM Presents:\nCircuit Builder",width/2,height/16);
-    int b1x=width/2;
+    /*int b1x=width/2;
     int b1y=height/3;
     int b1w=width/4;
-    int b1h=height/8;
+    int b1h=height/8;*/
     if(mouseOverRect(b1x,b1y,b1w,b1h)){
       fill(0,155,0);
     } else {
@@ -63,7 +68,8 @@ void draw() {
 }
 void mousePressed() {
   if(state==-1){
-    if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
+    if(mouseOverRect(b1x,b1y,b1w,b1h)){
+    //if(mouseX > width/2 && mouseX < width/2 + width/4 && mouseY > height/3 && mouseY < height/3 + height/8){
       state = 0;
     }
   }else if (state==0) {
