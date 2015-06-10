@@ -61,7 +61,7 @@ void draw() {
     if (state==0)message="Drag";
     if (state==1)message="Connect";
     fill(200, 122, 0);
-    text("State: "+message, 10, 30);
+    text("State: "+message, 110, 40);
 
     for (MenuOption m : menuItems) {
       m.display();
