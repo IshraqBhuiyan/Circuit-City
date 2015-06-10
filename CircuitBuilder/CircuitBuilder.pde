@@ -60,6 +60,12 @@ void draw() {
     background(100, 100, 100);
     if (state==0)message="Drag";
     if (state==1)message="Connect";
+    fill(230,230,0);
+    rectMode(CORNER);
+    rect(width*4/5,0,width/5,height);
+    fill(0,0,0);
+    text("Circuit Parts Menu",width*4/5,0,width/5,height/3);
+    rectMode(CENTER);
     fill(200, 122, 0);
     text("State: "+message, 110, 40);
 
