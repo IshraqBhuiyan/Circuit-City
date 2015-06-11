@@ -5,9 +5,13 @@ class circuitTreeNode /*implements TreeNode*/{
   circuitTreeNode p = null;
   circuitTreeNode[] c = null;
   Component me;
+  double circuitVoltageEffect;
+  double circuitAmpEffect;
   
   circuitTreeNode(Component m){
     me = m;
+    circuitVoltageEffect = 1.0;
+    circuitAmpEffect = 1.0;
   }
   
   circuitTreeNode(Component m, circuitTreeNode[] ch){
@@ -20,7 +24,7 @@ class circuitTreeNode /*implements TreeNode*/{
     p = pa;
   }
   
-  Component getComp(){
+  Component getMe(){
     return me;
   }
   
@@ -35,6 +39,19 @@ class circuitTreeNode /*implements TreeNode*/{
     }
     return ans;
   }
+  
+  void setVoltEffect(double x){
+    circuitVoltageEffect = x;
+  }
+  
+  void setAmpEffect(double x){
+    circuitAmpEffect = x;
+  }
+  
+  double[] getEffect(){
+    double[] pEffect = p.getEffect();
+    pEffect[0] = pEffect[0] * circuitVoltageEffect;
+    pEffect[1] = pEffect[1] * circuitAmpEffect;
+    return pEffect;
+  }
 }
-  
-  

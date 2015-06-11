@@ -1,0 +1,3 @@
+class ResistorS extends circuitTreeNode{
+  
+}
