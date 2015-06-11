@@ -57,18 +57,17 @@ void draw() {
   }
  
   else {
-    background(100, 100, 100);
+    background(200, 200, 200);
     if (state==0)message="Drag";
     if (state==1)message="Connect";
-    fill(230,230,0);
+    fill(170,170,170);
     rectMode(CORNER);
-    rect(width*4/5,0,width/5,height);
+    rect(width*4/5,height/19,width/6,height*7/8,10);
     fill(0,0,0);
     text("Circuit Parts Menu",width*4/5,0,width/5,height/3);
-    rectMode(CENTER);
     fill(200, 122, 0);
-    text("State: "+message, 110, 40);
-
+    text("State: "+message, width/10, height/19);
+    rectMode(CENTER);
     for (MenuOption m : menuItems) {
       m.display();
     }
@@ -109,6 +108,7 @@ void mousePressed() {
     }
   }else if (state==0) {
     if (dragon) {
+      dragon=false;
       if ((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6) {
         circuitParts.remove(circuitParts.size()-1);
       }
@@ -120,10 +120,10 @@ void mousePressed() {
         if (abs(mouseX-m.CX)<=m.img.width/2 && 
           abs(mouseY-m.CY)<=m.img.height/2) {
           m.getClicked();
+          dragon=true;
         }
       }
     }
-    dragon=!dragon;
   } else if (state==1) {
     for (Component c : circuitParts) {
       c.getClicked();
