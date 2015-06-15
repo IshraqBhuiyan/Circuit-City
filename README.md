@@ -40,3 +40,7 @@ Dev Log:
 5/27 During class: created first branch, Ishraq is now working on menu.
 
 5/27 Home: "finished" click and drag functionality, not sure if processing has stacks or not.
+
+6/something (because I forgot to update) Fixed ArrayIndexOutOfBounds: -1 Exception that happened during class...oops
+
+6/14 Finished buttons,
