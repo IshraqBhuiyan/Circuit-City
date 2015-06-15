@@ -7,4 +7,8 @@ class Resistor extends Component{
     setConnectionPoints();
     circuitParts.add(this);
   }
+  
+  void connectedAction(){
+    tint(255, 50, 50);
+  }
 }

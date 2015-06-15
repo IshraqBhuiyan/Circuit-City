@@ -65,4 +65,7 @@ class Component{
    }
    image(img,X,Y);
  }
+ 
+ void connectedAction(){
+ }
 }

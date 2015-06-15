@@ -6,5 +6,6 @@ class Battery extends Component{
     Y=CY-(img.height/2);
     //setConnectionPoints();
     circuitParts.add(this);
+    batteries.add(new circuitTreeNode(this));
   }
 }

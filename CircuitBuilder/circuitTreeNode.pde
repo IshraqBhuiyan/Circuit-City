@@ -66,5 +66,27 @@ class circuitTreeNode /*implements TreeNode*/{
     pEffect[1] = pEffect[1] * circuitAmpEffect;
     return pEffect;
   }
+  
+  boolean connected(Component x){
+    for(circuitTreeNode z: c){
+      if(z.getMe().equals(x)){
+        return true;
+      }
+    }
+    if(c.length == 0){
+      return false;
+    }
+    boolean t = false;
+    for(circuitTreeNode z: c){
+      if(z.connected(x) == true){
+        t = true;
+      }
+    }
+    return t;
+  }
+  
+  boolean connected(){
+    return connected(me);
+  }
 
 }
