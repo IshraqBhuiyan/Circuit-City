@@ -52,4 +52,5 @@ Dev Log:
 6/something (because I forgot to update) Fixed ArrayIndexOutOfBounds: -1 Exception that happened during class...oops
 
 6/14 Finished buttons
+
 Weekend of 6/12: Continued working on connection logic and trees and having effects to show connection. Was unable to complete due to some complications in the previous setup of how connections were done. Can look at code to see what was done.
