@@ -1,3 +1,4 @@
+import controlP5.*;
 ArrayList<MenuOption> menuItems = new ArrayList<MenuOption>();
 ArrayList<Component> circuitParts=new ArrayList<Component>();
 ArrayList<Wire> allWires = new ArrayList<Wire>();
@@ -9,6 +10,7 @@ float WireX=0, WireY=0;
 int b1x, b1y, bw, bh;
 int b2x, b2y;
 int b3x, b3y;
+ControlP5 cp5;
 void setup() {
   frameRate(30);
   size(1080, 900);
@@ -28,6 +30,27 @@ void setup() {
   b3y=b2y+height/5;
   rectMode(CENTER);
   textAlign(CENTER);
+  cp5=new ControlP5(this);
+  cp5.addButton("Help")
+    .setValue(1)
+      .setPosition(0, height*2/9)
+        .setSize(100, 50)
+          ;
+  cp5.addButton("Drag")
+    .setValue(2)
+      .setPosition(0, height*3/9)
+        .setSize(100, 50)
+          ;
+  cp5.addButton("Connect")
+    .setValue(3)
+      .setPosition(0, height*4/9)
+        .setSize(100, 50)
+          ;
+            cp5.addButton("Main_Menu")
+    .setValue(0)
+      .setPosition(0, height/9)
+        .setSize(100, 50)
+          ;
 } 
 void draw() {
   if (state==-1) {
@@ -41,6 +64,10 @@ void draw() {
     drawRectangle(b1x, b1y, "New Circuit");
     drawRectangle(b2x, b2y, "Load Circuit");
     drawRectangle(b3x, b3y, "Help");
+    cp5.getController("Main_Menu").hide();
+    cp5.getController("Help").hide();
+    cp5.getController("Drag").hide();
+    cp5.getController("Connect").hide();
   } else if (state==-2) {
     tint(255, 126);
     PImage img=loadImage("MenuBackground.png");
@@ -54,6 +81,10 @@ void draw() {
     rectMode(CENTER);
     textSize(60);
     drawRectangle(b1x, 11*height/12, "Back");
+    cp5.getController("Main_Menu").hide();
+    cp5.getController("Help").hide();
+    cp5.getController("Drag").hide();
+    cp5.getController("Connect").hide();
   } else {
     background(200, 200, 200);
     if (state==0)message="Drag";
@@ -66,14 +97,11 @@ void draw() {
     fill(0, 0, 0);
     text("Parts Menu", width*4/5, height/19, width/6, height/8);
     fill(200, 122, 0);
-    text("State: "+message, width/10, height/19);
-    fill(240,240,240);
-    rect(0,height*7/8,width*4/5,height/19,10);
-    fill(170,170,170);
-    rect(0,height*7/8,width/7,height/19,10);
-    rect(width/7,height*7/8,width/7,height/19,10);
-    rect(width*2/7,height*7/8,width/7,height/19,10);
-    rect(width*3/7,height*7/8,width/7,height/19,10);
+    text("State: "+message,width/2, height/19);
+    cp5.getController("Main_Menu").show();
+    cp5.getController("Help").show();
+    cp5.getController("Drag").show();
+    cp5.getController("Connect").show();
     rectMode(CENTER);
     for (MenuOption m : menuItems) {
       m.display();
@@ -103,6 +131,8 @@ void drawRectangle(int x, int y, String msg) {
 void mousePressed() {
   if (state==-1) {
     if (mouseOverRect(b1x, b1y, bw, bh)) {
+      ArrayList<Component>parts2=new ArrayList<Component>();
+      circuitParts=parts2;
       state = 0;
     } else if (mouseOverRect(b3x, b3y, bw, bh)) {
       state=-2;
@@ -114,7 +144,8 @@ void mousePressed() {
   } else if (state==0) {
     if (dragon) {
       dragon=false;
-      if ((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6) {
+      if ((circuitParts.get(circuitParts.size()-1).X+circuitParts.get(circuitParts.size()-1).img.width)>width*5/6 ||
+         (circuitParts.get(circuitParts.size()-1).X)<100) {
         circuitParts.remove(circuitParts.size()-1);
       }
       for (Component c : circuitParts) {
@@ -136,17 +167,33 @@ void mousePressed() {
   }
 }
 void keyPressed() {
-  if (key=='c') {
+  if (key=='c' && state==0) {
     state=1;
-    if (circuitParts.get(circuitParts.size()-1).dragging) {
+    if (circuitParts.size()>0 && circuitParts.get(circuitParts.size()-1).dragging) {
       circuitParts.remove(circuitParts.size()-1);
     }
+    dragon=false;
   }
-  if (key=='d') {
+  if (key=='d' && state==1) {
     state=0;
   }
 }
 boolean mouseOverRect(int x, int y, int w, int h) {
   return (mouseX >= x-w/2 && mouseX <= x+w/2 && mouseY >= y-h/2 && mouseY <= y+h/2);
 }
-
+void Connect(int theValue){
+  state=1;
+    if (circuitParts.size()>0 && circuitParts.get(circuitParts.size()-1).dragging) {
+      circuitParts.remove(circuitParts.size()-1);
+    }
+    dragon=false;
+}
+void Help(int theValue){
+  state=-2;
+}
+void Drag(int theValue){
+  state=0;
+}
+void Main_Menu(int theValue){
+  state=-1;
+}
