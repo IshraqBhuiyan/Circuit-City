@@ -1,14 +1,16 @@
 # Circuit-City
 Circuit Building Program based in Processing
-
+## Instructions
 NEEDS THIS LIBRARY
 
 http://www.sojamo.de/libraries/controlP5/
 
 import controlP5.*;
 
-Team OHM-NOM
+Just run the CircuitBuilder.pde
 
+Team OHM-NOM
+--------
 APCS Spring 2015 Konstantinovich Period 7
 
 Project Description:
