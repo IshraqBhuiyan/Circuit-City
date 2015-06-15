@@ -13,6 +13,12 @@ Team OHM-NOM
 --------
 APCS Spring 2015 Konstantinovich Period 7
 
+June 8th Version:
+https://github.com/IshraqBhuiyan/Circuit-City/tree/510763144cf2bd69057bad0725324b3f0be047f1
+
+June 1st Version: 
+https://github.com/IshraqBhuiyan/Circuit-City/tree/cdd625a32f5ba7108800d9bbc7e5ef7596f4b846
+
 Project Description:
 
 This will be a program that lets users simulate electrical circuits. They will be able to drag components of their circuit (e.g. batteries, resistors) from a menu and connect them with "wires" by clicking on the components.
